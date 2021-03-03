@@ -1,0 +1,29 @@
+name: 跃动
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '17,44 5-22 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YDZ_yuedongzuTOKEN: ${{ secrets.YDZ_yuedongzuTOKEN }}
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+      - name: '运行 【跃动】'
+        if: env.YDZ_yuedongzuTOKEN
+        run: |
+          node ydz.js
+    
