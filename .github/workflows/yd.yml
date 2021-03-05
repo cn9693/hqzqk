@@ -1,4 +1,4 @@
-name: 跃动
+name: 跃动,猫猫
 on:
   workflow_dispatch:
   schedule:
@@ -25,5 +25,8 @@ jobs:
       - name: '运行 【跃动】'
         if: env.YDZ_yuedongzuTOKEN
         run: |
-          node ydz.js
-    
+          node ydz.js     
+      - name: '运行 【猫猫】'
+        if: env.YDZ_yuedongzuTOKEN
+        run: |
+          node xsmm.js
