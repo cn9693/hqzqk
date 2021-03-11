@@ -1,9 +1,9 @@
 
-name: 云扫码，番茄看看
+name: 书旗小说，云扫码，番茄看看
 on:
   workflow_dispatch:
   schedule:
-     - cron: '26 9-21/2 * * *'
+     - cron: '26 5,20 * * *'
   watch:
     types: started
 jobs:
@@ -23,6 +23,10 @@ jobs:
       - name: npm install
         run: |
           npm install
+      - name: '运行 【书旗小说】'
+        if: env.WXQD
+        run: |
+          node sqxs.js          
       - name: '运行 【云扫码】'
         if: env.WXQD
         run: |
