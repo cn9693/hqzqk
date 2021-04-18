@@ -187,9 +187,9 @@ function GainStart() {
     $.post(gainHost('task/browse_start.json',gainbody), async(error, resp, data) =>{
       let startres = JSON.parse(data);
       if (startres.success == false) {
-        smbody = $.getdata('youth_start').replace(gainbody+"&","");
-        $.setdata(smbody,'youth_start');
-        $.log(startres.message+"已自动删除")
+        //smbody = $.getdata('youth_start').replace(gainbody+"&","");
+        //$.setdata(smbody,'youth_start');
+        //$.log(startres.message+"已自动删除")
       } else {
          comstate = startres.items.comtele_state;
       if (comstate == 0) {
